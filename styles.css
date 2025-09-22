@@ -1,0 +1,567 @@
+/* --- VASTUVITA BRAND IDENTITY & GLOBAL STYLES --- */
+:root {
+    --font-serif: 'Lora', serif; /* More elegant and readable */
+    --font-sans: 'Plus Jakarta Sans', sans-serif; /* Modern and clean */
+    
+    /* A palette inspired by natural materials */
+    --color-dark: #2C3E50; /* A deep, slate blue instead of pure black */
+    --color-light: #FDFBF5; /* A warm, parchment-like off-white */
+    --color-gray: #7F8C8D; /* A soft, natural gray */
+    --color-accent: #D35400; /* A bold, terracotta/earthy orange */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-color: #fff;
+    color: var(--color-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+h3 { font-size: 1.5rem; }
+
+a {
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+/* --- HEADER & NAVIGATION (MODIFIED) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem; /* Using the smaller padding */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.4s ease-in-out;
+
+    /* Styles for the frosted glass effect are now always active */
+    background-color: rgba(253, 251, 245, 0.85); /* --color-light with transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo a,
+.main-nav ul li a {
+    /* Text color is now dark by default to be visible */
+    color: var(--color-dark);
+}
+
+/* We no longer need the .main-header.scrolled rules, they have been merged above */
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav ul li {
+    margin-left: 2rem;
+}
+
+.menu-toggle { display: none; }
+
+/* --- HERO SECTION (Corrected Stacking) --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Layer 1: The video background */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 2; /* Layer 2: The dark overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; /* Layer 3: The text content on top */
+    max-width: 800px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+.hero-content h1,
+.hero-content p {
+    /* This adds a soft, blurred shadow behind the text */
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* --- GENERAL CONTENT & PAGE STYLES --- */
+.content-section {
+    padding: 6rem 0;
+}
+
+.bg-light {
+    background-color: var(--color-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.page-header {
+    background-color: var(--color-light);
+    padding: 6rem 0;
+    text-align: center;
+}
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+
+/* --- PROJECT GRID & CARDS --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.project-card {
+    display: block; /* Make the whole card a link */
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.project-card:hover .project-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-info p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+/* --- SINGLE PROJECT PAGE --- */
+.project-hero img {
+    width: 100%;
+    height: auto;
+}
+
+.project-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+}
+
+.project-meta h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.project-meta ul {
+    list-style: none;
+}
+
+.project-meta ul li {
+    margin-bottom: 0.5rem;
+    color: var(--color-gray);
+}
+.project-meta ul li strong {
+    color: var(--color-dark);
+}
+
+.project-narrative h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.project-narrative p {
+    margin-bottom: 2rem;
+    color: var(--color-gray);
+}
+
+.image-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.image-gallery-grid img {
+    width: 100%;
+    height: auto;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    background: var(--color-dark);
+    color: var(--color-light);
+    padding: 4rem 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-col h4 {
+    font-family: var(--font-serif);
+    margin-bottom: 1rem;
+}
+
+.footer-col p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+}
+
+/* --- ANIMATIONS & BEAUTIFICATION --- */
+
+/* Gentle Page Load Fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+body {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* In style.css */
+
+/* Enhanced Button Hover Effect (Corrected) */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--color-dark);
+    margin-top: 1rem;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: var(--color-dark); /* Explicitly set the default text color */
+}
+.btn:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* The initial background should be light */
+    background-color: var(--color-light); 
+    z-index: -2;
+}
+.btn:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    /* The hover background should be dark */
+    background-color: var(--color-dark);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+.btn:hover {
+    /* The hover text color should be light */
+    color: #fff; 
+}
+.btn:hover:before {
+    width: 100%;
+}
+
+/* Smooth Animated Underline for Nav Links */
+.main-nav a {
+    position: relative;
+}
+.main-nav a.active {
+    color: var(--color-accent) !important;
+}
+.main-nav a:not(.active):after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+.main-nav a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+/* Scroll-Reveal Animations */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- MOBILE NAVIGATION MENU --- */
+.main-nav {
+    /* Add transition for smooth appearance on desktop if ever needed */
+    transition: transform 0.5s ease-in-out;
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-light);
+    z-index: 99; /* Just below the header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-nav-overlay.is-open {
+    transform: translateX(0); /* Slide in */
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-nav-overlay ul li {
+    margin: 2rem 0;
+}
+
+.mobile-nav-overlay ul li a {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+/* --- PARALLAX TESTIMONIAL SECTION --- */
+.testimonial-section {
+    background-image: url('assets/parallax-bg.png');
+    background-attachment: fixed; /* This is the magic property! */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.testimonial-section .testimonial-author {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- NEW CONTENT BLOCK STYLES --- */
+/* Services Grid */
+/* In style.css */
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    /* This new property tells the grid to make all rows the same height */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+    margin-top: 3rem;
+    align-items: stretch;
+}
+/* In style.css */
+.service-card {
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    
+    /* ADD these two lines */
+    display: flex;
+    flex-direction: column;
+}
+.service-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.service-card h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+}
+
+/* In style.css */
+
+/* New rule for the icon and title wrapper */
+.service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between icon and title */
+    margin-bottom: 1rem; /* Space between the header and the paragraph */
+}
+
+/* Update the service-icon rule */
+.service-icon {
+    color: var(--color-accent);
+    /* The margin-bottom is no longer needed here */
+}
+
+/* Our Process Steps */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+    text-align: left;
+}
+.step-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+}
+.process-step h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Testimonial Block */
+.testimonial-block {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.testimonial-quote {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+/* Final CTA Section */
+.cta-section h2 {
+    font-size: 3rem;
+}
+.cta-section p {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+/* --- RESPONSIVE DESIGN (Consolidated) --- */
+@media (max-width: 768px) {
+    /* General Typography */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    /* Header & Mobile Menu */
+    .main-nav { display: none; }
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: 1px solid var(--color-dark); /* Now dark by default */
+        color: var(--color-dark); /* Now dark by default */
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        z-index: 101;
+    }
+    
+    /* Grid Layouts */
+    .project-grid, 
+    .footer-grid, 
+    .project-details-grid, 
+    .image-gallery-grid,
+    .services-grid, 
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .project-details-grid {
+        gap: 2rem;
+    }
+
+    /* Section Specifics */
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+    .testimonial-quote {
+        font-size: 1.5rem;
+    }
+}
