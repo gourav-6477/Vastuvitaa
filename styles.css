@@ -50,6 +50,7 @@ a:hover {
 }
 
 /* --- HEADER & NAVIGATION (MODIFIED) --- */
+
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -174,6 +175,7 @@ a:hover {
     position: relative;
     overflow: hidden;
 }
+
 
 .project-card img {
     width: 100%;
@@ -523,7 +525,150 @@ body {
     margin-top: 0;
     margin-bottom: 2rem;
 }
+/* Add these new rules for the combined logo and text */
+.logo-link {
+    display: flex;         /* Aligns logo and text side-by-side */
+    align-items: center;   /* Vertically centers them */
+    gap: 0.75rem;          /* Creates a nice space between the logo and text (12px) */
+}
 
+.logo-image {
+    height: 40px;          /* Controls the height of the logo */
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;     /* Sets the font size for "Vastuvitaa" */
+    font-weight: 600;      /* Makes the text bold */
+    font-family: var(--font-serif); /* Uses the elegant serif font you defined */
+    color: var(--color-dark);
+}
+/* --- Page-Specific Adjustments --- */
+.works-page .hero-section {
+    height: 50vh; /* Makes the header half the screen height */
+    min-height: 400px; /* Ensures it's not too short on long/thin screens */
+}
+
+/* =================================== */
+/* ==      CONTACT PAGE STYLES      == */
+/* =================================== */
+
+.contact-page .container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Details column is narrower than the form */
+    gap: 4rem;
+    align-items: start;
+}
+
+/* --- Left Column: Details --- */
+.contact-details .page-title {
+    font-family: var(--font-serif);
+    font-size: 3rem; /* Slightly smaller than homepage H1 for hierarchy */
+    margin-bottom: 1.5rem;
+    color: var(--color-dark);
+}
+
+.contact-details .contact-intro {
+    font-family: var(--font-sans);
+    color: var(--color-gray);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+.contact-details .info-section {
+    margin-bottom: 2rem;
+}
+
+.contact-details .info-section h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.contact-details .info-section p,
+.contact-details .info-section a {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+/* The global a:hover rule will correctly apply --color-accent */
+
+
+/* --- Right Column: Form --- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0; /* Using a neutral border from your theme */
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    background-color: var(--color-light); /* Using your light background color */
+    color: var(--color-dark);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    border: none;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    transition: all 0.4s ease;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-accent);
+    color: #fff;
+}
+
+
+/* --- Map Section --- */
+.map-container {
+    padding-bottom: 6rem;
+}
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
 /* --- RESPONSIVE DESIGN (Consolidated) --- */
 @media (max-width: 768px) {
     /* General Typography */
@@ -564,4 +709,8 @@ body {
     .testimonial-quote {
         font-size: 1.5rem;
     }
+    /* Add this to your existing @media (max-width: 768px) block */
+    .contact-grid {
+    grid-template-columns: 1fr;
+}
 }
