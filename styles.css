@@ -830,4 +830,20 @@ body {
     .contact-grid {
     grid-template-columns: 1fr;
 }
+/* Add this inside your @media (max-width: 768px) block */
+
+.project-card .project-info {
+    /* Make the info block appear normally, not as an overlay */
+    position: static; 
+    
+    /* Make it fully visible at all times */
+    opacity: 1; 
+    transform: translateY(0);
+
+    /* Give it a solid background for readability */
+    background: var(--color-dark);
+    
+    /* Adjust padding for the new look */
+    padding: 1rem;
+}
 }
