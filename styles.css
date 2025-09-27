@@ -55,7 +55,8 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem; /* Using the smaller padding */
+    padding: 0.7rem 1rem; 
+    /* Using the smaller padding */
     position: sticky;
     top: 0;
     width: 100%;
@@ -68,7 +69,9 @@ a:hover {
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
+.logo-link{
+    font-size: 1.7rem;
+}
 .logo a,
 .main-nav ul li a {
     /* Text color is now dark by default to be visible */
@@ -437,7 +440,79 @@ body {
 /* --- NEW CONTENT BLOCK STYLES --- */
 /* Services Grid */
 /* In style.css */
+/* --- Testimonial Slider (Integrated with VastuVitaa Styles) --- */
 
+/*
+* This container holds the testimonials. The min-height prevents the
+* page from "jumping" as the testimonials change.
+*/
+/* --- Testimonial Slider (Sliding Version) --- */
+
+/* The "viewport" for the slider. It's set to a specific height
+   and hides anything that slides outside of its boundaries. */
+#testimonial-slider {
+    position: relative;
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden; /* This is crucial for the sliding effect! */
+}
+
+/* The "track" that holds all slides in a long horizontal row.
+   The 'transform' property will be changed by JavaScript to create the slide. */
+.testimonial-track {
+    display: flex; /* Aligns slides side-by-side */
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); /* The slide animation */
+    transition: transform 0.5s ease-in-out; 
+}
+
+/* Each individual slide. They take up the full width of the viewport
+   and are prevented from shrinking. */
+.testimonial-slide {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem; /* Adds some side padding for text */
+}
+
+/*
+* This is a single testimonial slide. They are stacked on top of each other
+* and hidden by default with opacity: 0. The transition creates the fade effect.
+*/
+.testimonial-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem; /* Adds some padding on smaller screens */
+}
+
+/* The .active class is added by JavaScript to show the current slide */
+.testimonial-block.active {
+    opacity: 1;
+}
+
+/*
+* These styles for the quote and author are now inherited from your
+* existing .testimonial-quote and .testimonial-section rules.
+* We only need to adjust the author color to ensure it's visible on your
+* parallax background, as you've already defined.
+*/
+.testimonial-author {
+    font-family: var(--font-sans); /* Using your brand's sans-serif font */
+    font-weight: 600;
+    /* This color is taken from your existing parallax style for perfect consistency */
+    color: rgba(255, 255, 255, 0.8);
+}
 /* Services Grid */
 .services-grid {
     display: grid;
